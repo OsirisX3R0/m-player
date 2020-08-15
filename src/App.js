@@ -4,21 +4,22 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const [email, setEmail] = useState('richardharris916@gmail.com')
-  const [password, setPassword] = useState('osiris12')
   const [data, setData] = useState({})
+  const body = {
+    downloadId: 'z4tQHKIL',
+    key: '70zjLm3RmgMAlghJ2IkClA'
+  }
 
   useEffect(() => {
-    const body = { email, password }
     
-    axios.get(`/api/login`)
+    axios.post(`/api/folder/`, body)
       .then(res => {
         setData(res.data)
       })
       .catch(err => {
         console.log(err)
       })
-  }, [])
+  }, [body])
 
   return (
     <div className="App">
